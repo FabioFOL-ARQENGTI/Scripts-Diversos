@@ -1,0 +1,74 @@
+Olá pessoal!
+
+Hoje estamos trazendo um script que será rodado via GPO, que no final é uma mão na roda quando é necessário fazer um rastreamento quando um usuário logou, quantas vezes, em que desktop logou, quantos usuários logaram em um desktop ou vários desktops.
+
+Esse torna-se necessário quando estamos sem ferramentas de terceiros, que fazem essa coleta com grande maestria.
+
+Passos de Execução:
+
+1 – Identificar em sua rede quais tipos de SO existem;
+
+2 – Ter uma área de armazenamento remota, para envio desses logs;
+
+3 – Criar os WMI em Group Policy Management;
+
+4 – Criar as Gpos;
+
+ 1 – Identificar em sua rede quais tipos de SO existem;
+
+Nesse nosso procedimentos será (Windows XP, Windows Vista, Windows 7, Windows 8, Windows 10);
+2 – Ter uma área de armazenamento remota, para envio desses logs;
+
+\\Servidor\Share -> Onde será redirecionado no Script;
+3 – Criar os WMI em Group Policy Management;
+
+Para Windows XP
+SELECT version FROM Win32_OperatingSystem WHERE Version LIKE “5.1%” and ProductType = “1”
+obs: Nos testes realizados é necessário fazer o WMI somente para o Windows XP, em outros SO´s o comando funciona plenamente.
+
+4 – Criar as Gpos;
+
+4.1 Criar os aquivos .bat
+
+Primeiro com o nome sugestivo (IP_HOSTNAME_LOGIN_WINXP.bat), com seguinte conteúdo e salvar:
+
+Para Windows XP -Somente
+
+@set computername >> “\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@set username >> “\\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@ipconfig | findstr “Endereço IP” >> “\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@date /t >> “\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@time /T >> “\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+
+@set computername >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@set username >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@ipconfig | findstr “Endereço IP” >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@date /t >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@time /T >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+
+Segundo com o nome sugestivo (IP_HOSTNAME_LOGIN.bat), com seguinte conteúdo e salvar:
+
+Para Windows Vista, Windows 7, Windows 8, Windows 10
+
+@set computername >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@set username >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@ipconfig | findstr “Endereço IP” >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@date /t >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@time /T >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+
+@set computername >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@set username >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@ipconfig | findstr “Endereço IP” >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@date /t >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@time /T >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+
+4.2 Criar as 02 Gpos´s
+
+Primeira com o nome sugestivo (IP-HOSTNAME-LOGIN-WINXP);
+
+Segunda com o nome sugestivo (IP-HOSTNAME-LOGIN);
+
+Essa GPO é a nível:
+
+Usuário;
+User Configuration -> Policies -> Windows Settings -> Scripts -> Logon -> como dica sempre importante para ambientes grandes, apontar para \\dominio.local\netlogon (o que você ganha com isso que o DC que irá aplicar a GPO será sempre o mais próximo)
