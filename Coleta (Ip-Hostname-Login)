@@ -34,41 +34,55 @@ Primeiro com o nome sugestivo (IP_HOSTNAME_LOGIN_WINXP.bat), com seguinte conte�
 
 Para Windows XP -Somente
 
-@set computername >> “\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@set username >> “\\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@ipconfig | findstr “Endereço IP” >> “\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@date /t >> “\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@time /T >> “\\Servidor\Share\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@set computername >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@set username >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@ipconfig | findstr "Endereço IP" >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@ipconfig | findstr "Endereço IP" >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@date /T >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@time /T >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%username% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@date /T >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@time /T >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt"
 
-@set computername >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@set username >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@ipconfig | findstr “Endereço IP” >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@date /t >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@time /T >> “\\Servidor\Share\%computername% %date:~4,2%-%date:~7,2%-%date:~10,4% %TIME:~0,2%h%TIME:~3,2%min.txt”
-
-Segundo com o nome sugestivo (IP_HOSTNAME_LOGIN.bat), com seguinte conteúdo e salvar:
+Segundo com o nome sugestivo (IP_HOSTNAME_LOGIN_WINVISTA_WIN7_WIN8_WIN10.bat), com seguinte conteúdo e salvar:
 
 Para Windows Vista, Windows 7, Windows 8, Windows 10
 
-@set computername >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@set username >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@ipconfig | findstr “Endereço IP” >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@date /t >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@time /T >> “\\Servidor\Share\\%username% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-
-@set computername >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@set username >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@ipconfig | findstr “Endereço IP” >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@date /t >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
-@time /T >> “\\Servidor\Share\\%computername% %date:~0,2%-%date:~3,2%-%date:~6,10% %TIME:~0,2%h%TIME:~3,2%min.txt”
+@set computername >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%computername% %date:~6,4%-%date:~3,2%-%date:~0,2% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@set username >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%username% %date:~6,4%-%date:~3,2%-%date:~0,2% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@ipconfig | findstr "Endereço IP" >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%username% %date:~6,4%-%date:~3,2%-%date:~0,2% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@ipconfig | findstr "Endereço IP" >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%computername% %date:~6,4%-%date:~3,2%-%date:~0,2% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@date /T >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%username% %date:~6,4%-%date:~3,2%-%date:~0,2% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@time /T >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%username% %date:~6,4%-%date:~3,2%-%date:~0,2% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@date /T >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%computername% %date:~6,4%-%date:~3,2%-%date:~0,2% %TIME:~0,2%h%TIME:~3,2%min.txt"
+@time /T >> "\\SRVAD2012R201\IP_HOSTNAME_LOGIN$\%computername% %date:~6,4%-%date:~3,2%-%date:~0,2% %TIME:~0,2%h%TIME:~3,2%min.txt"
 
 4.2 Criar as 02 Gpos´s
 
 Primeira com o nome sugestivo (IP-HOSTNAME-LOGIN-WINXP);
 
-Segunda com o nome sugestivo (IP-HOSTNAME-LOGIN);
+Segunda com o nome sugestivo (IP-HOSTNAME-LOGIN-WINVISTA_07_08_10);
 
 Essa GPO é a nível:
+Usuário e Computador tranquilamente;
+User Configuration -> Policies -> Windows Settings -> Scripts -> Logon\Logoff Startup\Shutdown -> como dica sempre importante para ambientes grandes, apontar para \\dominio.local\netlogon (o que você ganha com isso que o DC que irá aplicar a GPO será sempre o mais próximo)
 
-Usuário;
-User Configuration -> Policies -> Windows Settings -> Scripts -> Logon -> como dica sempre importante para ambientes grandes, apontar para \\dominio.local\netlogon (o que você ganha com isso que o DC que irá aplicar a GPO será sempre o mais próximo)
+Filtros WMI:
+
+>>>>>>02 Filtros WMI para SO
+
+WINXP64
+select * from Win32_OperatingSystem WHERE (Version like "5.1%" or Version like "5.2%") AND ProductType="1"
+
+WINVISTA
+SELECT version FROM Win32_OperatingSystem WHERE Version LIKE "6.0%" and ProductType = "1" AND OSArchitecture = "64-bit"
+
+WIN7
+SELECT version FROM Win32_OperatingSystem WHERE Version LIKE "6.1%" and ProductType = "1" AND OSArchitecture = "64-bit"
+
+WIN8.1
+SELECT version FROM Win32_OperatingSystem WHERE Version LIKE "6.3%" and ProductType = "1" AND OSArchitecture = "64-bit"
+
+WIN10
+select * from Win32_OperatingSystem where Version like "10.%"
+
+Abraços FOL!
